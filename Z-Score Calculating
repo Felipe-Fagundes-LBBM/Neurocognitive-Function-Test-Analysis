@@ -1,0 +1,39 @@
+# z-score
+
+cbind(data)
+
+
+calcular_z_score <- function(x, media, desvio_padrao) {
+  if (x >= 21 & x <= 30) {
+    z_score <- (x - media) / desvio_padrao
+    return(z_score)
+  }
+}
+
+
+#######################################
+
+
+# Definir os valores constantes de média e desvio padrão para cada faixa etária
+constantes <- tribble(
+  ~LIMIT_AGE, ~media_constante, ~desvio_padrao_constante,
+  "18-21", 85.79, 22.53,
+  "21-30", 87.08, 21.50,
+  "31-40", 85.48, 22.56,
+  "41-49", 80.72, 22.85
+)
+
+# Calcular o Z-score usando as constantes para cada faixa etária
+BPA_CONC_EscoreZ <- data %>%
+  mutate(BPA_CONC_EscoreZ = case_when(
+    LIMIT_AGE == "18-21" ~ (BPA_CONC_POINTS - 85.79) / 22.53,
+    LIMIT_AGE == "21-30" ~ (BPA_CONC_POINTS - 87.08) / 21.50,
+    LIMIT_AGE == "31-40" ~ (BPA_CONC_POINTS - 85.48) / 22.56,
+    LIMIT_AGE == "41-49" ~ (BPA_CONC_POINTS - 80.72) / 22.85,
+    TRUE ~ NA_real_  # Caso padrão para outras faixas etárias
+  )) %>%
+  select(BPA_CONC_POINTS, AGE, LIMIT_AGE, BPA_CONC_EscoreZ) %>% 
+  arrange(BPA_CONC_EscoreZ)
+
+
+BPA_CONC_EscoreZ
