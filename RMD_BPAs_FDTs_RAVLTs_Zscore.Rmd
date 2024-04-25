@@ -1,6 +1,6 @@
 ---
 title: "Z-Score Testes Neurocognitivos"
-output: html_notebook
+output: 
 ---
 
 ![](images/1-s2.0-S1053811921001701-gr2-01.jpg)
