@@ -1,8 +1,9 @@
 ---
-title: "R Notebook"
+title: "Z-Score Testes Neurocognitivos"
 output: html_notebook
-
 ---
+
+![](images/1-s2.0-S1053811921001701-gr2-01.jpg)
 
 ```{r message=FALSE, warning=FALSE}
 library(tibble)
@@ -201,8 +202,7 @@ pp3
 
 
 
-``` 
-
+```
 
 ```{r}
 
@@ -247,7 +247,7 @@ p9 <- data %>%  select(ID,EDU_LEVEL ,GROUP ,AGE, FDT_FLEXIBILITY , FDT_FLEXIBILI
 ########################  P4
 
 
-coresFDT <- c("#f1948a", "#abebc6")
+coresFDT <- c("#ff6b41", "#55c12a")
 
 
 
@@ -555,8 +555,7 @@ pp9 <- ggplotly(p9, tooltip="text") %>%
 
 
 pp9
-``` 
-
+```
 
 ```{r}
 library(tibble)
@@ -609,7 +608,7 @@ p22 <- data %>%  select(ID,EDU_LEVEL ,GROUP ,AGE, RAVLT_RETRO_INTERFERENCE , RAV
 ########################  P10
 
 
-coresRAVLT<- c("#0c6482", "#ef9364")
+coresRAVLT<- c("#0c6482", "#0c7924")
 
 
 
