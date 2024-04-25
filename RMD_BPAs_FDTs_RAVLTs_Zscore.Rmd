@@ -1,6 +1,8 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output:
+  html_document:
+    df_print: paged
 ---
 
 ```{r warning = F, message = F }
@@ -281,7 +283,18 @@ p4 <- data %>%
 
 #p4
 
-pp4 <- ggplotly(p4, tooltip="text") 
+pp4 <- ggplotly(p4, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
 
 
 pp4
@@ -319,7 +332,19 @@ p5 <- data %>%
 
 #p5
 
-pp5 <- ggplotly(p5, tooltip="text") 
+pp5 <- ggplotly(p5, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp5
@@ -359,7 +384,19 @@ p6 <- data %>%
 
 #p6
 
-pp6 <- ggplotly(p6, tooltip="text") 
+pp6 <- ggplotly(p6, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp6
@@ -399,7 +436,19 @@ p7<- data %>%
 
 #p7
 
-pp7 <- ggplotly(p7, tooltip="text") 
+pp7 <- ggplotly(p7, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp7
@@ -440,7 +489,19 @@ p8<- data %>%
 
 #p8
 
-pp8 <- ggplotly(p8, tooltip="text") 
+pp8 <- ggplotly(p8, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp8
@@ -479,7 +540,19 @@ p9<- data %>%
 
 #p9
 
-pp9 <- ggplotly(p9, tooltip="text") 
+pp9 <- ggplotly(p9, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp9
@@ -537,7 +610,7 @@ p22 <- data %>%  select(ID,EDU_LEVEL ,GROUP ,AGE, RAVLT_RETRO_INTERFERENCE , RAV
 ########################  P10
 
 
-coresRAVLT<- c("#e59866", "#b2babb")
+coresRAVLT<- c("#0c6482", "#ef9364")
 
 
 
@@ -572,7 +645,19 @@ p10 <- data %>%
 
 #p10
 
-pp10 <- ggplotly(p10, tooltip="text") 
+pp10 <- ggplotly(p10, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp10
@@ -611,7 +696,19 @@ p11 <- data %>%
 
 #p11
 
-pp11 <- ggplotly(p11, tooltip="text") 
+pp11 <- ggplotly(p11, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp11
@@ -652,7 +749,19 @@ p12 <- data %>%
 
 #p12
 
-pp12 <- ggplotly(p12, tooltip="text") 
+pp12 <- ggplotly(p12, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp12
@@ -692,7 +801,19 @@ p13 <- data %>%
 
 #p13
 
-pp13 <- ggplotly(p13, tooltip="text") 
+pp13 <- ggplotly(p13, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp13
@@ -732,7 +853,19 @@ p14 <- data %>%
 
 #p14
 
-pp14 <- ggplotly(p14, tooltip="text") 
+pp14 <- ggplotly(p14, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp14
@@ -772,7 +905,19 @@ p15 <- data %>%
 
 #p15
 
-pp15 <- ggplotly(p15, tooltip="text") 
+pp15 <- ggplotly(p15, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp15
@@ -813,7 +958,19 @@ p16 <- data %>%
 
 #p16
 
-pp16 <- ggplotly(p16, tooltip="text") 
+pp16 <- ggplotly(p16, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp16
@@ -853,7 +1010,19 @@ p17 <- data %>%
 
 #p17
 
-pp17 <- ggplotly(p17, tooltip="text") 
+pp17 <- ggplotly(p17, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp17
@@ -891,7 +1060,19 @@ p18 <- data %>%
 
 #p18
 
-pp18 <- ggplotly(p18, tooltip="text") 
+pp18 <- ggplotly(p18, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp18
@@ -903,9 +1084,9 @@ pp18
 p19 <- data %>% 
   arrange(ID) %>% 
   mutate(text = paste("Identification: ", ID , "\nAge: ", AGE , 
-                      "\nPoints: ", RAVLT_TOTALSCORE,
-                      "\nZ-Score: ", RAVLT_TOTALSCORE_Z, sep="")) %>%
-  ggplot(aes(x = AGE, y = RAVLT_TOTALSCORE_Z, fill= GROUP, stroke = 0,
+                      "\nPoints: ", RAVLT_REC,
+                      "\nZ-Score: ", RAVLT_REC_Z, sep="")) %>%
+  ggplot(aes(x = AGE, y = RAVLT_REC_Z, fill= GROUP, stroke = 0,
              size = AGE, shape = EDU_LEVEL , text = text)) +
   geom_point(alpha = 0.7) +
   scale_fill_manual(values = coresRAVLT) +
@@ -931,7 +1112,19 @@ p19 <- data %>%
 
 #p19
 
-pp19 <- ggplotly(p19, tooltip="text") 
+pp19 <- ggplotly(p19, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp19
@@ -970,7 +1163,19 @@ p20 <- data %>%
 
 #p20
 
-pp20 <- ggplotly(p20, tooltip="text") 
+pp20 <- ggplotly(p20, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp20
@@ -1009,7 +1214,19 @@ p21 <- data %>%
 
 #p21
 
-pp21 <- ggplotly(p21, tooltip="text") 
+pp21 <- ggplotly(p21, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp21
@@ -1048,7 +1265,19 @@ p22 <- data %>%
 
 #p22
 
-pp22 <- ggplotly(p22, tooltip="text") 
+pp22 <- ggplotly(p22, tooltip="text") %>%  
+  
+    layout(legend = list(x = 0.001, y = 0.001,
+                     title = " ",
+                     bgcolor = "#ecf0f1",
+                     bordercolor = "white",
+                     borderwidth = 1,
+                     font = list(size = 9, family = "Arial", color = "black"),
+                     orientation = 50,
+                     tracegroupgap = 20,
+                     traceorder = "normal"
+                     ))
+
 
 
 pp22
