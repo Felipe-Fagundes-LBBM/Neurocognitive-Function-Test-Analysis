@@ -1,0 +1,165 @@
+---
+title: "R Notebook"
+output: html_notebook
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
+---
+
+```{r}
+library(readxl)
+
+setwd("C:/Users/felip/Desktop/R/2_analise")
+
+getwd()
+
+#data <- read.table("Análises-avaliação-cognitivas_PCA_groups-_2_.txt", header = T)
+data <- readxl::read_xlsx ("Análises avaliação cognitivas_PCA_groups (2).xlsx")
+
+```
+
+```{r}
+#Filtrando colunas 
+library(dplyr)
+
+data <- select(data,2,8,10,12,14,16,18,20,22,24,26,28,30,32) %>%  
+  relocate(IDADE, .after = RAVLT_aprediz_value)
+  
+data
+
+```
+
+```{r}
+library(corrplot) 
+library(scales) 
+library(colorspace)
+
+#data \<- data[ ,unlist(lapply(data, is.numeric))] #retirando coluna com variavel categorica
+
+normdata <- as.matrix(scale(data)) 
+normdata_matriz <- cor(normdata, use = "pairwise.complete.obs", method = c("pearson"))
+
+col = sequential_hcl(8, palette = "Lajolla") #colour
+
+corrplot(normdata_matriz, method="circle", type="full", order="hclust", col = col, tl.srt = 40, tl.col = "black", tl.cex = 0.8)
+
+```
+
+```{r}
+library(cluster)
+
+df_FDT <- as.data.frame(data[,c(10:13,14)])
+
+clusters <- pam(df_FDT, k = 2)
+
+df_clusterFDT <- as.data.frame(cbind(df_FDT, clusters=clusters$clustering))
+
+names(df_clusterFDT)
+
+table(df_clusterFDT$clusters)
+
+```
+
+```{r}
+library(factoextra)
+df_clusterFDT$clusters <- factor(df_clusterFDT$clusters, levels = c("1", "2"))
+Group <- factor(df_clusterFDT$clusters, levels = c("1", "2"))
+res.pca <- prcomp(df_clusterFDT[,-6], scale = T)
+p <- fviz_pca_ind(res.pca,
+                  col.ind = Group, # color by groups
+                  geom = c("point"),
+                  palette = c("#6A011F", "#08376A"),
+                  addEllipses = TRUE, # Concentration ellipses
+                  legend.title = "Diagnostic",
+                  repel = TRUE,
+                  ellipse.level=0.70
+) + theme(legend.position = "bottom") + ggtitle("PCA") + 
+  theme(text = element_text(size = 16), axis.text = element_text(size = 16)) 
+
+print(p)
+
+#Adding histogram
+p1 <- ggExtra::ggMarginal(p, type = "density", groupFill = TRUE, groupColour = TRUE)
+print(p1)
+
+
+# Scree plot ######################################
+fviz_eig(res.pca)+
+  theme(text = element_text(size = 16), axis.text = element_text(size = 16))
+
+
+# Variables plot
+fviz_pca_var(res.pca,
+             col.var = "contrib", # Color by contributions to the PC
+             gradient.cols = c("darkgrey", "darkgreen", "blue"),
+             alpha.var = 0.1,
+             repel = TRUE # Avoid text overlapping
+)+
+  theme(text = element_text(size = 16), axis.text = element_text(size = 16))
+```
+
+```{r}
+
+#norm_df_clusterBPA <- as.data.frame(apply(df_clusterBPA[,-8], 2, function(x) (x - min(x)) / (max(x) - min(x))))
+```
+
+```{r}
+library(tidyr)
+library(ggplot2)
+library(ggpubr)
+
+data1 = data[,c(10:13,14)]
+
+data1 <- cbind(data1, clusters=clusters$clustering)
+
+str(data1)
+
+#col_cluster <- df_clusterFDT$clusters
+
+df_clusterFDT
+
+filled_dataEXPR <- df_clusterFDT %>% tidyr::gather("params", "value", -clusters)
+
+# col_cluster_replicado <- rep(col_cluster, length.out = nrow(filled_dataEXPR))
+
+filled_dataEXPR$clusters <- factor(filled_dataEXPR$clusters, levels = c("1", "2"))
+
+
+
+
+symnum.args <- list(
+  cutpoints = c(0, 0.0001, 0.001, 0.01, 0.05, 1), 
+  symbols = c("****","***", "**", "*", waiver()))
+
+#comparisons = my_comparisons
+
+ggboxplot(filled_dataEXPR, x = "clusters", y = "value",
+          color = "clusters", palette = c( "#6A011F", "#08376A"),
+          add = c("jitter", "median_iqr"), 
+          add.params = list(size = 0.5))+
+  #scale_y_continuous(breaks = pretty(c(0,1), n = 7), 
+  #                  limits = c(0,1.7), name=expression(Expression))+
+  #expand_limits(y = c(0, 1.6), size=1)+
+  #scale_y_continuous(limits = c(0, 60)) +
+  facet_wrap(~params  , strip.position="bottom") +
+  stat_compare_means(method= "wilcox", label = "p.format", 
+                     label.y = c(55,55,55,55,55), bracket.size = 0.3, tip.length = 0.003, 
+                     hide.ns = F, aes(Clusters = clusters), #comparisons = my_comparisons, 
+                     vjust = 0.5, size = 5, 
+                     symnum.args = symnum.args) + 
+    theme(strip.text.x = element_text(size = 15)) +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.line.x=element_line(),
+        strip.background = element_rect(color="white", fill="white"),
+        strip.placement = "outside",
+        panel.border = element_blank(), 
+        panel.background = element_blank(), 
+        panel.grid = element_blank(), 
+        panel.spacing.x = unit(0,"line"),
+        panel.spacing.y = unit(0,"line"),
+        axis.text.y = element_text(size = 14), 
+        axis.title.y = element_text(size = 16))  
+```
