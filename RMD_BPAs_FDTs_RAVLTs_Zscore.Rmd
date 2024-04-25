@@ -1,11 +1,10 @@
 ---
 title: "R Notebook"
-output:
-  html_document:
-    df_print: paged
+output: html_notebook
+
 ---
 
-```{r warning = F, message = F }
+```{r message=FALSE, warning=FALSE}
 library(tibble)
 library(readxl)
 library(dplyr)
@@ -23,7 +22,7 @@ data
 
 #gt_plt_summary(data)
 
-.
+
 
 #######################     BPA ANALYSIS
 
