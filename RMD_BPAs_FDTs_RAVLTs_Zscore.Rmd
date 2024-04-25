@@ -23,7 +23,7 @@ data
 
 #gt_plt_summary(data)
 
-
+.
 
 #######################     BPA ANALYSIS
 
@@ -647,7 +647,7 @@ p10 <- data %>%
 
 pp10 <- ggplotly(p10, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -698,7 +698,7 @@ p11 <- data %>%
 
 pp11 <- ggplotly(p11, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -751,7 +751,7 @@ p12 <- data %>%
 
 pp12 <- ggplotly(p12, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -803,7 +803,7 @@ p13 <- data %>%
 
 pp13 <- ggplotly(p13, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -836,7 +836,7 @@ p14 <- data %>%
   scale_y_continuous(name = "Z Score", limits = c(-3, 3), breaks = seq(-3, 3)) +
   geom_hline(yintercept = -3:3, color = "black", alpha = 0.1) + 
   geom_hline(yintercept = 0, color = "red", alpha = 0.3, linetype = "") +
-  labs(y = "Y", title = "Z Score RAVLT A4", shape= "", size = "") +
+  labs(y = "Y", title = "Z Score RAVLT A5", shape= "", size = "") +
   theme_classic() +
   
     theme(
@@ -855,7 +855,7 @@ p14 <- data %>%
 
 pp14 <- ggplotly(p14, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -907,7 +907,7 @@ p15 <- data %>%
 
 pp15 <- ggplotly(p15, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -960,7 +960,7 @@ p16 <- data %>%
 
 pp16 <- ggplotly(p16, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -1012,7 +1012,7 @@ p17 <- data %>%
 
 pp17 <- ggplotly(p17, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -1062,7 +1062,7 @@ p18 <- data %>%
 
 pp18 <- ggplotly(p18, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -1095,7 +1095,7 @@ p19 <- data %>%
   scale_y_continuous(name = "Z Score", limits = c(-3, 3), breaks = seq(-3, 3)) +
   geom_hline(yintercept = -3:3, color = "black", alpha = 0.1) + 
   geom_hline(yintercept = 0, color = "red", alpha = 0.3, linetype = "") +
-  labs(y = "Y", title = "Z Score RAVLT Total Score", shape= "", size = "") +
+  labs(y = "Y", title = "Z Score RAVLT Recognition", shape= "", size = "") +
   theme_classic() +
   
     theme(
@@ -1114,7 +1114,7 @@ p19 <- data %>%
 
 pp19 <- ggplotly(p19, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -1165,7 +1165,7 @@ p20 <- data %>%
 
 pp20 <- ggplotly(p20, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -1216,7 +1216,7 @@ p21 <- data %>%
 
 pp21 <- ggplotly(p21, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
@@ -1267,7 +1267,7 @@ p22 <- data %>%
 
 pp22 <- ggplotly(p22, tooltip="text") %>%  
   
-    layout(legend = list(x = 0.001, y = 0.001,
+    layout(legend = list(x = 0, y = 1.01,
                      title = " ",
                      bgcolor = "#ecf0f1",
                      bordercolor = "white",
