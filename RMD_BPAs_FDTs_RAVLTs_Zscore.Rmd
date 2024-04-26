@@ -1,9 +1,9 @@
 ---
 title: "Z-Score Testes Neurocognitivos"
-output: 
+output: html_notebook
 ---
 
-![](images/1-s2.0-S1053811921001701-gr2-01.jpg)
+![](images/machine_learning_746x419-01.jpg)
 
 ```{r message=FALSE, warning=FALSE}
 library(tibble)
@@ -15,9 +15,13 @@ library(plotly)
 library(viridis)
 library(hrbrthemes)
 
-setwd("C:/Users/felip/Desktop/R/3_analise")
+getwd()
+
+#data0 <- readxl::read_xlsx ("DADOS_BRUTOS_COVID_LONGA_PREENCHENDO(1).xlsx", sheet = 1)
 
 data <- readxl::read_xlsx ("BPAs_FDTs_ RAVLTs_EscoreZ.xlsx", sheet = 1)
+
+#colnames(data0)
 
 data
 
@@ -28,7 +32,24 @@ data
 #######################     BPA ANALYSIS
 
 
-summary(data)
+
+# Calcular o Z-score usando as constantes para cada faixa etária
+#BPA_CONC_EscoreZ <- data %>%
+ # mutate(BPA_CONC_EscoreZ = case_when(
+    #LIMIT_AGE == "18-21" ~ (BPA_CONC_POINTS - 85.79) / 22.53,
+    #LIMIT_AGE == "21-30" ~ (BPA_CONC_POINTS - 87.08) / 21.50,
+    #LIMIT_AGE == "31-40" ~ (BPA_CONC_POINTS - 85.48) / 22.56,
+    #LIMIT_AGE == "41-49" ~ (BPA_CONC_POINTS - 80.72) / 22.85,
+    #TRUE ~ NA_real_  # Caso padrão para outras faixas etárias
+  #)) %>%
+  #select(BPA_CONC_POINTS, AGE, LIMIT_AGE, BPA_CONC_EscoreZ) %>% 
+  #arrange(BPA_CONC_EscoreZ)
+
+
+#BPA_CONC_EscoreZ
+
+
+#summary(data)
 
 #utils::View(data)
 
@@ -113,7 +134,7 @@ p2 <- data %>%
   scale_y_continuous(name = "Z Score", limits = c(-3, 3), breaks = seq(-3, 3)) +
   geom_hline(yintercept = -3:3, color = "black", alpha = 0.1) + 
   geom_hline(yintercept = 0, color = "red", alpha = 0.3, linetype = "") +
-  labs(y = "Y", title = "Z Score BPA Focused Attention", shape= "", size = "") +
+  labs(y = "Y", title = "Z Score BPA Divid Attention", shape= "", size = "") +
   theme_classic() +
   
     theme(
@@ -165,7 +186,7 @@ p3 <- data %>%
   scale_y_continuous(name = "Z Score", limits = c(-3, 3), breaks = seq(-3, 3)) +
   geom_hline(yintercept = -3:3, color = "black", alpha = 0.1) + 
   geom_hline(yintercept = 0, color = "red", alpha = 0.3, linetype = "") +
-  labs(y = "Y", title = "Z Score BPA Focused Attention", shape= "", size = "") +
+  labs(y = "Y", title = "Z Score BPA Alterned Attention", shape= "", size = "") +
   theme_classic() +
   
     theme(
@@ -174,8 +195,7 @@ p3 <- data %>%
     plot.subtitle = element_text(size = 12),
     strip.text = element_text(size = 12),
     plot.caption = element_text(size = 9, face = "italic"),
-    axis.title = element_text(size = 10),
-    legend.position = "",
+    axis.title = element_text(size = 12),
     legend.text = element_text(size = 5)
     )
   
@@ -185,13 +205,13 @@ p3 <- data %>%
 pp3 <-  ggplotly(p3, tooltip="text") %>%  
   
     layout(legend = list(x = 0.001, y = 0.001,
-                     title = " ",
-                     bgcolor = "#ecf0f1",
+                     title = " ",               #Titulo da legenda some
+                     bgcolor = "#ecf0f1",       #cor da caixa
                      bordercolor = "white",
                      borderwidth = 1,
-                     font = list(size = 9, family = "Arial", color = "black"),
+                     font = list(size = 9, family = "Arial", color = "black"),                                       #fonte da legenda
                      orientation = 50,
-                     tracegroupgap = 20,
+                     tracegroupgap = 10,
                      traceorder = "normal"
                      ))
 
