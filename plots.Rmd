@@ -1,0 +1,558 @@
+---
+title: "Untitled"
+output: pdf_document
+date: "2024-05-01"
+---
+
+```{r}
+#library(tidyverse)
+#library(readxl)
+#library(ggplot2)
+#library(glue)
+#library(ggtext)
+#library(ggpubr)
+#library(hrbrthemes)
+#library(rstatix)
+#library(scales)
+#library(ggbreak)
+
+#install.packages("ggtext")
+#install.packages("hrbrthemes")
+#install.packages("ggbreak")
+
+#getwd()
+
+
+#data <- readxl::read_xlsx ("BPAs_FDTs_ RAVLTs_EscoreZ.xlsx", sheet = 1)
+
+data
+
+
+
+p1 <- data %>%  select(GROUP , BPA_CONC_POINTS)
+
+p2 <- data %>%  select(GROUP ,EDU_LEVEL,  BPA_DIVID_POINTS  )
+
+p3 <- data %>%  select(GROUP ,EDU_LEVEL ,BPA_ALTERN_POINTS  )
+
+
+
+
+
+plot1 <- p1 |>
+  ggplot(aes(x = GROUP, y = BPA_CONC_POINTS, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "BPA Focused Points") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot1
+
+
+
+plot2 <- p2 |>
+  ggplot(aes(x = GROUP, y = BPA_DIVID_POINTS, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "BPA Divid Attention") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot2
+
+
+
+plot3 <- p3 |>
+  ggplot(aes(x = GROUP, y = BPA_ALTERN_POINTS, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "BPA Alterned Attention") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot3
+
+
+
+```
+
+
+
+
+```{r}
+data <- readxl::read_xlsx ("BPAs_FDTs_ RAVLTs_EscoreZ.xlsx", sheet = 2)
+
+data
+
+
+p4 <- data %>%  select(GROUP, FDT_READING_TIME )
+
+p5 <- data %>%  select(GROUP,FDT_COUNTING_TIME  )
+
+p6 <- data %>%  select(GROUP,FDT_CHOOSING_TIME )
+
+p7 <- data %>%  select(GROUP ,FDT_CHANGING_TIME )
+
+p8 <- data %>%  select(GROUP ,FDT_INHIBITION  )
+
+p9 <- data %>%  select(GROUP,FDT_FLEXIBILITY )
+
+
+
+plot4 <- p4|>
+  ggplot(aes(x = GROUP, y = FDT_READING_TIME, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "FDT Reading Time") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot4
+
+plot5 <- p5|>
+  ggplot(aes(x = GROUP, y = FDT_COUNTING_TIME, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "FDT Counting Time") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot5
+
+
+
+plot6 <- p6|>
+  ggplot(aes(x = GROUP, y = FDT_CHOOSING_TIME, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "FDT Counting Time") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot6
+
+
+
+plot7 <- p7|>
+  ggplot(aes(x = GROUP, y = FDT_CHANGING_TIME, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "FDT Changing Time") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot7
+
+
+
+plot8 <- p8|>
+  ggplot(aes(x = GROUP, y = FDT_INHIBITION, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "FDT Inibition Time") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot8
+
+
+
+plot9 <- p9|>
+  ggplot(aes(x = GROUP, y = FDT_FLEXIBILITY, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "FDT Flexibility Time") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot9
+
+```
+
+
+```{r}
+
+
+data <- readxl::read_xlsx ("BPAs_FDTs_ RAVLTs_EscoreZ.xlsx", sheet = 3)
+
+data
+
+
+#######################     RAVLTs ANALYSIS
+
+
+
+p10 <- data %>%  select(GROUP, RAVLT_A1  )
+
+p11 <- data %>%  select(GROUP, RAVLT_A2  )
+
+p12 <- data %>%  select(GROUP, RAVLT_A3  )
+
+p13 <- data %>%  select(GROUP, RAVLT_A4 )
+
+p14 <- data %>%  select(GROUP, RAVLT_A5 )
+
+p15 <- data %>%  select(GROUP ,RAVLT_B1 )
+
+p16 <- data %>%  select(GROUP ,RAVLT_A6 )
+
+p17 <- data %>%  select(GROUP , RAVLT_A7)
+
+p18 <- data %>%  select(GROUP , RAVLT_TOTALSCORE )
+
+p19 <- data %>%  select(GROUP , RAVLT_REC )
+
+p20 <- data %>%  select(GROUP ,RAVLT_RETENTION )
+
+p21 <- data %>%  select(GROUP ,RAVLT_PROAT_INTERFERENCE  )
+
+p22 <- data %>%  select(GROUP , RAVLT_RETRO_INTERFERENCE  )
+
+
+
+plot10 <- p10|>
+  ggplot(aes(x = GROUP, y = RAVLT_A1, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT A1") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot10
+
+
+plot11 <- p11|>
+  ggplot(aes(x = GROUP, y = RAVLT_A2, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT A2") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot11
+
+
+plot12 <- p12|>
+  ggplot(aes(x = GROUP, y = RAVLT_A3, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT A3") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot12
+
+plot13 <- p13|>
+  ggplot(aes(x = GROUP, y = RAVLT_A4, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT A4") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot13
+
+
+plot14 <- p14|>
+  ggplot(aes(x = GROUP, y = RAVLT_A5, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT A5") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot14
+
+
+
+plot15 <- p15|>
+  ggplot(aes(x = GROUP, y = RAVLT_B1, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT B1") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot15
+
+
+
+plot16 <- p16|>
+  ggplot(aes(x = GROUP, y = RAVLT_A6, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT A6") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot16
+
+
+plot17 <- p17|>
+  ggplot(aes(x = GROUP, y = RAVLT_A7, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT A7") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot17
+
+
+
+plot18 <- p18|>
+  ggplot(aes(x = GROUP, y = RAVLT_TOTALSCORE, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT Total Score") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot18
+
+
+
+plot19 <- p19|>
+  ggplot(aes(x = GROUP, y = RAVLT_REC, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT Recognition") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot19
+
+
+plot20 <- p20|>
+  ggplot(aes(x = GROUP, y = RAVLT_RETENTION, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT Retention") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot20
+
+
+plot21 <- p21|>
+  ggplot(aes(x = GROUP, y = RAVLT_PROAT_INTERFERENCE, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT Proative Interference") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot21
+
+
+plot22 <- p22|>
+  ggplot(aes(x = GROUP, y = RAVLT_RETRO_INTERFERENCE, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = "RAVLT Retroative Interference") + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  # Defina as cores manualmente
+  scale_color_manual(values = c("#1a2887", "#799de4")) +  # Use as mesmas cores para as bolinhas
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+plot22
+
+```
+
