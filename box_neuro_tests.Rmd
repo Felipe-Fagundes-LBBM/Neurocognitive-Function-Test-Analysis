@@ -1,29 +1,29 @@
 ---
-title: "Untitled"
-output: pdf_document
+title: "boxplots_tests_neuro"
+output: html_notebook
 date: "2024-05-01"
 ---
 
 ```{r}
-#library(tidyverse)
-#library(readxl)
-#library(ggplot2)
-#library(glue)
-#library(ggtext)
-#library(ggpubr)
-#library(hrbrthemes)
-#library(rstatix)
-#library(scales)
-#library(ggbreak)
+library(tidyverse)
+library(readxl)
+library(ggplot2)
+library(glue)
+library(ggtext)
+library(ggpubr)
+library(hrbrthemes)
+library(rstatix)
+library(scales)
+library(dplyr)
 
 #install.packages("ggtext")
 #install.packages("hrbrthemes")
 #install.packages("ggbreak")
 
-#getwd()
+getwd()
 
 
-#data <- readxl::read_xlsx ("BPAs_FDTs_ RAVLTs_EscoreZ.xlsx", sheet = 1)
+data <- readxl::read_xlsx ("BPAs_FDTs_ RAVLTs_EscoreZ.xlsx", sheet = 1)
 
 data
 
@@ -99,7 +99,6 @@ plot3 <- p3 |>
         strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
 
 plot3
-
 
 
 ```
