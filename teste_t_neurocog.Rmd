@@ -1,0 +1,60 @@
+---
+output: html_notebook
+date: "2024-05-01"
+---
+
+
+```{r}
+library(ggplot2)
+library(dplyr)
+
+df <- read_excel("BPAs_FDTs_ RAVLTs_EscoreZ.xlsx", sheet = 1)
+
+df
+
+
+p1 <- data %>%  select(GROUP , BPA_CONC_POINTS,BPA_DIVID_POINTS, BPA_ALTERN_POINTS )
+
+
+
+# Supondo que 'data' seja o nome do seu dataframe
+p1 <- data %>% 
+  select(GROUP, BPA_CONC_POINTS, BPA_DIVID_POINTS, BPA_ALTERN_POINTS)
+
+# Reorganize os dados para o formato 'long' usando a função pivot_longer() do pacote tidyr
+p1_long <- tidyr::pivot_longer(p1, cols = -GROUP, names_to = "Variable", values_to = "Value")
+
+# Crie o gráfico facetado
+plot1 <- ggplot(p1_long, aes(x = GROUP, y = Value, fill = GROUP)) + 
+  geom_boxplot(outlier.shape = NA, alpha = 0.5, width = 0.7, coef = 0, lwd = 0.4, color = "black") +
+  geom_jitter(aes(color = GROUP), size = 1.5, width = 0.15, alpha = 0.5) +
+  labs(x = NULL, y = NULL) + 
+  scale_fill_manual(values = c("#1a2887", "#799de4")) +  
+  scale_color_manual(values = c("#1a2887", "#799de4")) +
+  facet_wrap(~ Variable, scales = "free_y", 
+             labeller = labeller(Variable = 
+                                   c(BPA_CONC_POINTS = "BPA-Conc Points",
+                                     BPA_DIVID_POINTS = "BPA-Divid Points",
+                                     BPA_ALTERN_POINTS = "BPA-Altern Points"))) +
+  scale_y_continuous(limits = c(20, 120), breaks = seq(20, 120, by = 20)) +
+  theme(axis.text = element_text(size = 11, color = "black"),
+        axis.title = element_text(size = 15, color = "black"),
+        panel.background = element_rect(fill = "white"),
+        axis.line = element_line(color = "black"),
+        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
+        text = element_text(size = 12, family = "Tahoma"),
+        legend.position = "bottom",
+        strip.background = element_blank(),
+        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+
+
+# Ajuste as escalas de acordo com o mínimo e máximo dos dados
+#plot1 <- plot1 + ylim(min(p1_long$Value), max(p1_long$Value))
+
+plot1
+
+
+
+
+```
+
