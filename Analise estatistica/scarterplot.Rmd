@@ -1,0 +1,191 @@
+---
+title: "R Notebook"
+output: html_document
+---
+
+
+```{r}
+library(plotly)
+library(dplyr)
+                            # BPAS
+
+#setwd("C:\\Users\\felip\\Desktop\\R\\Estudying-Plot_ly-in-R\\3d plots")
+
+getwd()
+
+data  <- data <- readxl::read_xlsx ("DADOS_BRUTOS_COVID_LONGA_PREENCHENDO(1).xlsx", sheet = 1)
+
+data
+
+
+p1 <- plot_ly(data, x = ~BPA_ALTERN_POINTS, y = ~BPA_DIVID_POINTS, z = ~BPA_CONC_POINTS,
+              size = ~AGE, sizes = c(5,15), marker = list(symbol = 'circle', sizemode = 'diameter'),
+             text = ~paste('ID:', ID,
+                            '<br>Grupo:', GROUP,
+                            '<br>Idade:', AGE,
+                            '<br>Pontuação Moca:', MOCA_VALUE,
+                           # '<br>Atenção Alternada:', BPA_ALTERN_POINTS,
+                           # '<br>Atenção Concentrada:', BPA_DIVID_POINTS,
+                           # '<br>Atenção Dividida:', BPA_CONC_POINTS,
+                            '<br>Nível de educação:', EDU_LEVEL)) %>% 
+       
+     add_markers(color = ~MOCA_VALUE) %>% 
+  layout(
+    scene = list(
+      xaxis = list(title = "Atenção Alternada ",
+                   gridcolor = 'rgb(255, 255, 255)',
+                   range = c(0, 120),
+                   zerolinewidth = 1,
+                   ticklen = 5,
+                   gridwidth = 2),
+    
+      yaxis = list(title = "Atenção Concentrada ",
+                   gridcolor = 'rgb(255, 255, 255)',
+                   range = c(0, 120),
+                   zerolinewidth = 1,
+                   ticklen = 5,
+                   gridwidth = 2),
+
+      zaxis = list(title = "Atenção Dividida ",
+                   gridcolor = 'rgb(255, 255, 255)',
+                   range = c(0, 120),
+                   zerolinewidth = 1,
+                   ticklen = 5,
+                   gridwidth = 2)),
+
+  paper_bgcolor = 'rgb(243, 243, 243)',
+  plot_bgcolor = 'rgb(243, 243, 243)'
+)
+  
+  
+
+
+
+
+p1
+
+
+
+
+p2 <- plot_ly(data, x = ~BPA_ALTERN_POINTS, y = ~BPA_DIVID_POINTS, z = ~BPA_CONC_POINTS,
+              size = ~AGE, sizes = c(5,15), marker = list(symbol = 'circle', sizemode = 'diameter'),
+              text = ~paste('ID:', ID,
+                            '<br>Grupo:', GROUP,
+                            '<br>Idade:', AGE,
+                            '<br>Pontuação Moca:', MOCA_VALUE,
+                           # '<br>Atenção Alternada:', BPA_ALTERN_POINTS,
+                           # '<br>Atenção Concentrada:', BPA_DIVID_POINTS,
+                           # '<br>Atenção Dividida:', BPA_CONC_POINTS,
+                            '<br>Nível de educação:', EDU_LEVEL)) %>% 
+       
+     add_markers(color = ~GROUP ,colors = c('#636EFA','#EF553B')) %>% 
+  layout(
+    scene = list(
+      xaxis = list(title = "Atenção Alternada ",
+                   gridcolor = 'rgb(255, 255, 255)',
+                   range = c(0, 120),
+                   zerolinecolor = "red",
+                   zerolinewidth = 1,
+                   ticklen = 5,
+                   gridwidth = 2),
+    
+      yaxis = list(title = "Atenção Concentrada ",
+                   gridcolor = 'rgb(255, 255, 255)',
+                   range = c(0, 120),
+                   zerolinecolor = "red",
+                   zerolinewidth = 1,
+                   ticklen = 5,
+                   gridwidth = 2),
+
+      zaxis = list(title = "Atenção Dividida ",
+                   gridcolor = 'rgb(255, 255, 255)',
+                   range = c(0, 120),
+                   zerolinecolor = "red",
+                   zerolinewidth = 1,
+                   ticklen = 5,
+                   gridwidth = 2)),
+
+  paper_bgcolor = 'rgb(243, 243, 243)',
+  plot_bgcolor = 'rgb(243, 243, 243)'
+)
+  
+  
+
+
+
+
+p2
+
+
+
+
+
+
+
+```
+
+```{r}
+                                       # FDTs
+
+library(plotly) 
+library(stats) 
+
+
+#setwd("C:\\Users\\felip\\Desktop\\R\\Estudying-Plot_ly-in-R\\3d plots")
+
+data  <- data <- readxl::read_xlsx ("DADOS_BRUTOS_COVID_LONGA_PREENCHENDO(1).xlsx", sheet = 1)
+
+
+colnames(data)
+
+data
+
+X <- subset(data, select = -c(GROUP)) 
+
+
+
+axis = list(showline=FALSE, 
+            zeroline=FALSE, 
+            gridcolor='#ffff', 
+            ticklen=4)
+
+
+p3 <- data %>%  
+  plot_ly()  %>%  
+  add_trace(  
+    type = 'splom',  
+    dimensions = list( 
+      list(label = 'Reading Time',values=~FDT_READING_TIME),  
+      list(label = 'Counting Time',values=~FDT_COUNTING_TIME),  
+      list(label ='Choosing Time',values=~FDT_CHOOSING_TIME),  
+      list(label = 'Changing Time',values=~FDT_CHANGING_TIME),  
+      list(label = 'Inibição',values=~FDT_INHIBITION),  
+      list(label = 'Flexibilidade',values=~FDT_FLEXIBILITY)),  
+
+    color = ~GROUP, colors = c('#1d3457','#b599e9') 
+  ) 
+
+p3 <- p3 %>% 
+  layout( 
+    legend=list(title=list(text='Grupos')), 
+    hovermode='closest', 
+    dragmode= 'select', 
+    plot_bgcolor='rgba(240,240,240,0.95)', 
+    xaxis=list(domain=NULL, showline=F, zeroline=F, gridcolor='#ffff', ticklen=4), 
+    yaxis=list(domain=NULL, showline=F, zeroline=F, gridcolor='#ffff', ticklen=4), 
+    xaxis2=axis, 
+    xaxis3=axis, 
+    xaxis4=axis, 
+    yaxis2=axis, 
+    yaxis3=axis, 
+    yaxis4=axis 
+  ) 
+
+
+p3
+  
+
+
+```
+
+
