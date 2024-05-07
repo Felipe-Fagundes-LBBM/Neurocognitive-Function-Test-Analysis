@@ -7,6 +7,8 @@ date: "2024-05-01"
 ```{r}
 library(ggplot2)
 library(dplyr)
+library(readxl)
+library(ggpubr)
 
 df <- read_excel("BPAs_FDTs_ RAVLTs_EscoreZ.xlsx", sheet = 1)
 
@@ -51,7 +53,7 @@ plot1 <- ggplot(p1_long, aes(x = GROUP, y = Value, fill = GROUP)) +
 # Ajuste as escalas de acordo com o mínimo e máximo dos dados
 #plot1 <- plot1 + ylim(min(p1_long$Value), max(p1_long$Value))
 
-plot1 + stat_compare_means(method = "t.test")
+plot1 + stat_compare_means(method = "t.test", label.x = 1.5)
 
 
 
@@ -91,22 +93,22 @@ plot2 <- ggplot(p2_long, aes(x = GROUP, y = Value, fill = GROUP)) +
                                      FDT_CHANGING_TIME = "Chaging Time",
                                      FDT_INHIBITION =  "Inhibition", 
                                      FDT_FLEXIBILITY = "Flexibility"))) +
-  scale_y_continuous(limits = c(20, 130), breaks = seq(20, 100, by = 20)) +
+  #scale_y_continuous(limits = c(20, 130), breaks = seq(20, 100, by = 20)) +
   theme(axis.text = element_text(size = 11, color = "black"),
         axis.title = element_text(size = 15, color = "black"),
         panel.background = element_rect(fill = "white"),
         axis.line = element_line(color = "black"),
-        plot.title = element_text(size = 14, family = "Tahoma", face = "bold"),
-        text = element_text(size = 12, family = "Tahoma"),
+        plot.title = element_text(size = 14, family = "", face = "bold"),
+        text = element_text(size = 12, family = ""),
         legend.position = "bottom",
         strip.background = element_blank(),
-        strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
+        strip.text = element_text(size = 14, family = "", face = "bold"))
 
 
 # Ajuste as escalas de acordo com o mínimo e máximo dos dados
 #plot1 <- plot1 + ylim(min(p1_long$Value), max(p1_long$Value))
 
-plot2 + stat_compare_means(method = "t.test" , label.y = 110, label.x = 1.1)
+plot2 + stat_compare_means(method = "t.test" , label.x = 2)
 
 
 
@@ -202,7 +204,7 @@ plot4 + stat_compare_means(method = "t.test" , label.y = 18, label.x = 1.1)
 
 
 
-######################################
+#RAVLT
 
 
 p5 <- df %>%  select(GROUP , RAVLT_TOTALSCORE)
@@ -237,7 +239,7 @@ plot5 <- ggplot(p5_long, aes(x = GROUP, y = Value, fill = GROUP)) +
 # Ajuste as escalas de acordo com o mínimo e máximo dos dados
 #plot1 <- plot1 + ylim(min(p1_long$Value), max(p1_long$Value))
 
-plot5 + stat_compare_means(method = "t.test" , label.y = 18, label.x = 1.1)
+plot5 + stat_compare_means(method = "t.test" ,  label.y = 65, label.x =1.7)
 
 
 
@@ -281,6 +283,7 @@ plot6 + stat_compare_means(method = "t.test", label.y = 18, label.x = 1.1)
 
 
 ###########################
+
 p7 <- df %>%  select(GROUP,RAVLT_RETENTION,RAVLT_RETRO_INTERFERENCE)
 
 p7_long <- tidyr::pivot_longer(p7, cols = -GROUP, names_to = "Variable", values_to = "Value")
@@ -309,7 +312,7 @@ plot7 <- ggplot(p7_long, aes(x = GROUP, y = Value, fill = GROUP)) +
         strip.text = element_text(size = 14, family = "Tahoma", face = "bold"))
 
 
-plot7 + stat_compare_means(method = "t.test")
+plot7 + stat_compare_means(method = "t.test" )
 
 ```
 
